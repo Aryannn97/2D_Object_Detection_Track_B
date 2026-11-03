@@ -1,0 +1,1559 @@
+{
+  "kind": "static_source_audit_not_model_execution",
+  "generated_at_utc": "2026-10-27T18:20:04.252923+00:00",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "repositories": [
+    {
+      "name": "vision",
+      "url": "https://github.com/pytorch/vision",
+      "expected_commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "actual_commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "commit_matches": true,
+      "tracked_files_clean": true
+    },
+    {
+      "name": "ultralytics",
+      "url": "https://github.com/ultralytics/ultralytics",
+      "expected_commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "actual_commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "commit_matches": true,
+      "tracked_files_clean": true
+    },
+    {
+      "name": "detr",
+      "url": "https://github.com/facebookresearch/detr",
+      "expected_commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "actual_commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "commit_matches": true,
+      "tracked_files_clean": true
+    }
+  ],
+  "evidence_count": 63,
+  "passed_count": 63,
+  "evidence": [
+    {
+      "id": "TV01",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/generalized_rcnn.py",
+      "symbol": "GeneralizedRCNN.forward",
+      "start_line": 46,
+      "end_line": 110,
+      "claim": "Calls image transform, backbone, RPN, RoI heads, coordinate restoration and loss merge.",
+      "why": "Establishes actual two-stage orchestration rather than an assumed architecture.",
+      "file_sha256": "e3e0e9f15c7e4a30c3499ed3b19d75ae692f107df7e9a2ee48e944457890edfb",
+      "file_lines": 118,
+      "span_sha256": "5cd542379eefb3684326d531dc6526cd4009de251089b85a6683ff5995341434",
+      "definitions": [
+        {
+          "symbol": "GeneralizedRCNN.forward",
+          "start_line": 46,
+          "end_line": 118
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/generalized_rcnn.py#L46-L110",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV02",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/faster_rcnn.py",
+      "symbol": "_default_anchorgen",
+      "start_line": 37,
+      "end_line": 40,
+      "claim": "Defines five pyramid anchor scales and three aspect ratios per location.",
+      "why": "Documents shape priors and the number of RPN candidates.",
+      "file_sha256": "f039de80b2999ebf10fb3af3193effa5e21cfe4fd1d6ad628c31f99f53f78101",
+      "file_lines": 846,
+      "span_sha256": "079c790e97534c25ed7aedca47a2845ababd5dd7b13bd75695332c2198d2e9b3",
+      "definitions": [
+        {
+          "symbol": "_default_anchorgen",
+          "start_line": 37,
+          "end_line": 40
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/faster_rcnn.py#L37-L40",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV03",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/faster_rcnn.py",
+      "symbol": "FasterRCNN.__init__",
+      "start_line": 167,
+      "end_line": 283,
+      "claim": "Builds RPN, 7x7 MultiScaleRoIAlign, TwoMLPHead, FastRCNNPredictor and default hyperparameters.",
+      "why": "Pins the exact non-v2 variant and both suppression stages.",
+      "file_sha256": "f039de80b2999ebf10fb3af3193effa5e21cfe4fd1d6ad628c31f99f53f78101",
+      "file_lines": 846,
+      "span_sha256": "d9df9609ab8d4543d33d7706bdf896882f052869394c70dba3302e6824ef3c61",
+      "definitions": [
+        {
+          "symbol": "FasterRCNN.__init__",
+          "start_line": 167,
+          "end_line": 283
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/faster_rcnn.py#L167-L283",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV04",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/rpn.py",
+      "symbol": "RegionProposalNetwork.assign_targets_to_anchors",
+      "start_line": 193,
+      "end_line": 229,
+      "claim": "Forms GT-anchor IoU matrix and labels positives, negatives and ignored anchors.",
+      "why": "Shows many-to-one anchor matching in executable code.",
+      "file_sha256": "ee36ea3e92de9671826f9167fa6b945de645f444369e1139af668d02e47d5743",
+      "file_lines": 388,
+      "span_sha256": "6cea363e1e19d6200d74119c26e381b31e47d59e624ae0ad8548f0de5aece96f",
+      "definitions": [
+        {
+          "symbol": "RegionProposalNetwork.assign_targets_to_anchors",
+          "start_line": 193,
+          "end_line": 229
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/rpn.py#L193-L229",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV05",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/_utils.py",
+      "symbol": "Matcher.__call__",
+      "start_line": 358,
+      "end_line": 396,
+      "claim": "Thresholds each candidate's best GT IoU into foreground, background or ignore and invokes optional low-quality matching.",
+      "why": "Explains how RPN avoids leaving poorly covered GT boxes without matched candidates.",
+      "file_sha256": "db2dc5438179c9784533b5485a6bbfef41692a0663c5d4ffb9c7f36308b76544",
+      "file_lines": 540,
+      "span_sha256": "ec7d87422637c9ac4a91d8b20200939830ffd4e5ca5b1959c596ad3f988c46e3",
+      "definitions": [
+        {
+          "symbol": "Matcher.__call__",
+          "start_line": 358,
+          "end_line": 396
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/_utils.py#L358-L396",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV06",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/rpn.py",
+      "symbol": "RegionProposalNetwork.compute_loss",
+      "start_line": 299,
+      "end_line": 334,
+      "claim": "Uses sampled-anchor BCE and positive-only Smooth L1 with beta 1/9.",
+      "why": "Distinguishes actual default losses from modern IoU loss recipes.",
+      "file_sha256": "ee36ea3e92de9671826f9167fa6b945de645f444369e1139af668d02e47d5743",
+      "file_lines": 388,
+      "span_sha256": "21100747bc0e81f2c446630caf88861f84e00b186cfcf069f02ebdec24668a58",
+      "definitions": [
+        {
+          "symbol": "RegionProposalNetwork.compute_loss",
+          "start_line": 299,
+          "end_line": 334
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/rpn.py#L299-L334",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV07",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/rpn.py",
+      "symbol": "RegionProposalNetwork.filter_proposals",
+      "start_line": 242,
+      "end_line": 297,
+      "claim": "Performs per-level top-K, clipping, small-box/score filtering and level-grouped NMS.",
+      "why": "Distinguishes proposal filtering from final class-wise NMS.",
+      "file_sha256": "ee36ea3e92de9671826f9167fa6b945de645f444369e1139af668d02e47d5743",
+      "file_lines": 388,
+      "span_sha256": "a3879d4d998e36a227a92a08b6c206ccb3df20f3fb611114254309fee8641076",
+      "definitions": [
+        {
+          "symbol": "RegionProposalNetwork.filter_proposals",
+          "start_line": 242,
+          "end_line": 297
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/rpn.py#L242-L297",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV08",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/roi_heads.py",
+      "symbol": "RoIHeads.select_training_samples",
+      "start_line": 630,
+      "end_line": 666,
+      "claim": "Appends GT proposals, matches, samples and encodes regression targets.",
+      "why": "Shows second assignment stage and why weak RPNs can still provide training positives.",
+      "file_sha256": "521f7de74c5950499e8f00f6a514612afa8d5746d8fc6d8e9bcc860b611d0c38",
+      "file_lines": 876,
+      "span_sha256": "2428bdeb5ed8b5a925e6660052873fca634d33f77b42c7ce35050113fc901ddb",
+      "definitions": [
+        {
+          "symbol": "RoIHeads.select_training_samples",
+          "start_line": 630,
+          "end_line": 666
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/roi_heads.py#L630-L666",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV09",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/roi_heads.py",
+      "symbol": "fastrcnn_loss",
+      "start_line": 12,
+      "end_line": 49,
+      "claim": "Uses softmax CE and class-specific positive-only Smooth L1 normalized by sampled RoI count.",
+      "why": "Makes the stage-two background and regression conventions explicit.",
+      "file_sha256": "521f7de74c5950499e8f00f6a514612afa8d5746d8fc6d8e9bcc860b611d0c38",
+      "file_lines": 876,
+      "span_sha256": "7b32a62cfdaf0d1be7408e88f349de392708b521f881a62aa39925cbb71d5c36",
+      "definitions": [
+        {
+          "symbol": "fastrcnn_loss",
+          "start_line": 12,
+          "end_line": 49
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/roi_heads.py#L12-L49",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV10",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/roi_heads.py",
+      "symbol": "RoIHeads.postprocess_detections",
+      "start_line": 668,
+      "end_line": 725,
+      "claim": "Decodes class-specific boxes, softmaxes, removes background, thresholds and runs class-wise NMS.",
+      "why": "Shows how many proposal-class candidates become final detections.",
+      "file_sha256": "521f7de74c5950499e8f00f6a514612afa8d5746d8fc6d8e9bcc860b611d0c38",
+      "file_lines": 876,
+      "span_sha256": "2afd4c27e37fb803cad347d31e25f889eead0ea30cc952e46d2c172f5cd9d9d0",
+      "definitions": [
+        {
+          "symbol": "RoIHeads.postprocess_detections",
+          "start_line": 668,
+          "end_line": 725
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/roi_heads.py#L668-L725",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV11",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/backbone_utils.py",
+      "symbol": "_resnet_fpn_extractor",
+      "start_line": 118,
+      "end_line": 150,
+      "claim": "Selects residual stages and builds a 256-channel BackboneWithFPN.",
+      "why": "Identifies the actual neck and per-model feature selections.",
+      "file_sha256": "e05cb3a1c47a612edc1b92094cc4700b8e2dba96d740303f46effcaaa6a3bb62",
+      "file_lines": 244,
+      "span_sha256": "f990114264ef3d5c0ab221eea2f065e14edea063dc53a1f2aeb73f36edcf9c53",
+      "definitions": [
+        {
+          "symbol": "_resnet_fpn_extractor",
+          "start_line": 118,
+          "end_line": 150
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/backbone_utils.py#L118-L150",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV12",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/ops/feature_pyramid_network.py",
+      "symbol": "FeaturePyramidNetwork.forward",
+      "start_line": 172,
+      "end_line": 204,
+      "claim": "Upsamples top-down inner features and adds lateral features before output convolution.",
+      "why": "Separates additive FPN fusion from concatenation-based PAN designs.",
+      "file_sha256": "99f91aca0c51cfed1301d4ccab67c200bf84d16c654674df75bfacfc9e6a3c4e",
+      "file_lines": 250,
+      "span_sha256": "a7e9f62ed3293fa80359b59088a146160c32f6a650f3d9833ec672146a4013b0",
+      "definitions": [
+        {
+          "symbol": "FeaturePyramidNetwork.forward",
+          "start_line": 172,
+          "end_line": 204
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/ops/feature_pyramid_network.py#L172-L204",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV13",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/fcos.py",
+      "symbol": "FCOS.__init__",
+      "start_line": 365,
+      "end_line": 426,
+      "claim": "Uses one stride-sized square reference per location and records inference defaults.",
+      "why": "AnchorGenerator utility naming does not imply anchor-IoU-based assignment.",
+      "file_sha256": "f2bf0c6b2bd431e4ca7c3a336b81f2ebb0a18118252f3046e984b9a8d7bce2c3",
+      "file_lines": 775,
+      "span_sha256": "fe901727723fcb06ebb42de94c0cc67acef7868db3a8576e9bcd6de3f9c7bd71",
+      "definitions": [
+        {
+          "symbol": "FCOS.__init__",
+          "start_line": 365,
+          "end_line": 429
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/fcos.py#L365-L426",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV14",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/fcos.py",
+      "symbol": "FCOS.compute_loss",
+      "start_line": 440,
+      "end_line": 487,
+      "claim": "Selects positives by center sampling, inside-box and scale bounds, breaking ties by smallest GT area.",
+      "why": "Provides center-sampling assignment evidence and explains many-to-one positives.",
+      "file_sha256": "f2bf0c6b2bd431e4ca7c3a336b81f2ebb0a18118252f3046e984b9a8d7bce2c3",
+      "file_lines": 775,
+      "span_sha256": "268b6ac86d90298e92e687d64fffc512a366469d92117f95b8a3acd2632724f0",
+      "definitions": [
+        {
+          "symbol": "FCOS.compute_loss",
+          "start_line": 440,
+          "end_line": 487
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/fcos.py#L440-L487",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV15",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/fcos.py",
+      "symbol": "FCOSHead.compute_loss",
+      "start_line": 52,
+      "end_line": 125,
+      "claim": "Uses sigmoid focal classification, decoded-box GIoU and positive centerness BCE, normalized by positives.",
+      "why": "Documents the actual TorchVision loss recipe and its difference from generic FCOS summaries.",
+      "file_sha256": "f2bf0c6b2bd431e4ca7c3a336b81f2ebb0a18118252f3046e984b9a8d7bce2c3",
+      "file_lines": 775,
+      "span_sha256": "368a83c9c06c0039c8be1e1a59eda1a2aaa4b805e073cf9284cfe38f3865c9ac",
+      "definitions": [
+        {
+          "symbol": "FCOSHead.compute_loss",
+          "start_line": 52,
+          "end_line": 125
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/fcos.py#L52-L125",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV16",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/fcos.py",
+      "symbol": "FCOSClassificationHead.forward",
+      "start_line": 183,
+      "end_line": 198,
+      "claim": "Reshapes per-level dense class logits to N x HWA x C and concatenates levels.",
+      "why": "Connects feature map locations to classifier targets and final candidate indexing.",
+      "file_sha256": "f2bf0c6b2bd431e4ca7c3a336b81f2ebb0a18118252f3046e984b9a8d7bce2c3",
+      "file_lines": 775,
+      "span_sha256": "cb7ff6c23fb52a8d1ea709f8d078f77140ccbc0f80ae2d871dc9a68492d51c77",
+      "definitions": [
+        {
+          "symbol": "FCOSClassificationHead.forward",
+          "start_line": 183,
+          "end_line": 198
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/fcos.py#L183-L198",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV17",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/fcos.py",
+      "symbol": "FCOSRegressionHead.forward",
+      "start_line": 245,
+      "end_line": 267,
+      "claim": "Applies ReLU to four regression outputs, predicts centerness from the regression tower, and flattens levels.",
+      "why": "Establishes nonnegative distance prediction rather than anchor-delta regression.",
+      "file_sha256": "f2bf0c6b2bd431e4ca7c3a336b81f2ebb0a18118252f3046e984b9a8d7bce2c3",
+      "file_lines": 775,
+      "span_sha256": "c980a39af12e1a73cb8e0df1234a7d178887d247431739990313dd0991945d44",
+      "definitions": [
+        {
+          "symbol": "FCOSRegressionHead.forward",
+          "start_line": 245,
+          "end_line": 267
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/fcos.py#L245-L267",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV18",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/_utils.py",
+      "symbol": "BoxLinearCoder.encode",
+      "start_line": 240,
+      "end_line": 273,
+      "claim": "Encodes ltrb distances from reference centers and normalizes by reference width/height.",
+      "why": "Explains the stride-sized references used by anchor-free FCOS.",
+      "file_sha256": "db2dc5438179c9784533b5485a6bbfef41692a0663c5d4ffb9c7f36308b76544",
+      "file_lines": 540,
+      "span_sha256": "d4323ddce8f7dad7381e6addc38ce2c85c4d5f94f8e159616dce2c259859dad0",
+      "definitions": [
+        {
+          "symbol": "BoxLinearCoder.encode",
+          "start_line": 240,
+          "end_line": 273
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/_utils.py#L240-L273",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV19",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/fcos.py",
+      "symbol": "FCOS.postprocess_detections",
+      "start_line": 489,
+      "end_line": 556,
+      "claim": "Computes square root of class-times-centerness sigmoid scores, per-level top-K, ltrb decoding and class-wise NMS.",
+      "why": "Shows why FCOS uses NMS and why its confidence scale differs from softmax scores.",
+      "file_sha256": "f2bf0c6b2bd431e4ca7c3a336b81f2ebb0a18118252f3046e984b9a8d7bce2c3",
+      "file_lines": 775,
+      "span_sha256": "590c2f1cdbb9d17fa94e52a072972ba75924a2169b10b60ed0965689540eff13",
+      "definitions": [
+        {
+          "symbol": "FCOS.postprocess_detections",
+          "start_line": 489,
+          "end_line": 556
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/fcos.py#L489-L556",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV20",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/transform.py",
+      "symbol": "GeneralizedRCNNTransform.postprocess",
+      "start_line": 257,
+      "end_line": 277,
+      "claim": "Resizes prediction boxes from transformed image size to original image size.",
+      "why": "Prevents confusing resized/padded coordinates with delivered detections.",
+      "file_sha256": "31ad020ef2c23259373314b76ac5dc0f1ad2a2c44b69c68ba62f93df82d79b50",
+      "file_lines": 319,
+      "span_sha256": "e0fbe31758258861fca356cb22edecd43eeb67127e3a1ef7aabb3c5ebdcf506a",
+      "definitions": [
+        {
+          "symbol": "GeneralizedRCNNTransform.postprocess",
+          "start_line": 257,
+          "end_line": 277
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/transform.py#L257-L277",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV21",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/fcos.py",
+      "symbol": "fcos_resnet50_fpn",
+      "start_line": 766,
+      "end_line": 775,
+      "claim": "Builds ResNet50 FPN from layers 2,3,4 and P6/P7 extras.",
+      "why": "Pins FCOS to P3-P7 rather than Faster R-CNN P2-P6.",
+      "file_sha256": "f2bf0c6b2bd431e4ca7c3a336b81f2ebb0a18118252f3046e984b9a8d7bce2c3",
+      "file_lines": 775,
+      "span_sha256": "142c0aab05f9e04204efe47ba6e15cf7541dea721bca22a63d8dd653677745fa",
+      "definitions": [
+        {
+          "symbol": "fcos_resnet50_fpn",
+          "start_line": 682,
+          "end_line": 775
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/fcos.py#L766-L775",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV22",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/resnet.py",
+      "symbol": "resnet50",
+      "start_line": 736,
+      "end_line": 763,
+      "claim": "Creates Bottleneck ResNet with stage block counts 3,4,6,3.",
+      "why": "Identifies real backbone implementation rather than only a model-family label.",
+      "file_sha256": "7499a5059ad7b1a1f8f7543c04b4a13795140fad837c38530b48ff5d9610bf6e",
+      "file_lines": 985,
+      "span_sha256": "bb19276d0151a0394de1163972de709f3a3938f1bf5bdd2a49cbc4d90e3e056a",
+      "definitions": [
+        {
+          "symbol": "resnet50",
+          "start_line": 736,
+          "end_line": 763
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/resnet.py#L736-L763",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "TV23",
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/ops/focal_loss.py",
+      "symbol": "sigmoid_focal_loss",
+      "start_line": 7,
+      "end_line": 58,
+      "claim": "Weights BCE by alpha_t and (1-p_t)^gamma with defaults alpha .25 and gamma 2.",
+      "why": "Explains dense negative downweighting rather than negative subsampling.",
+      "file_sha256": "f6416a1b2034fa1a1d470f40bbbe24f85b92d783a1b00bdb1710c6be9c74f128",
+      "file_lines": 58,
+      "span_sha256": "bdcfa2e36906aeb8fbcbdb5350d8615714150ef2e6487e0d78db130c79c1c050",
+      "definitions": [
+        {
+          "symbol": "sigmoid_focal_loss",
+          "start_line": 7,
+          "end_line": 58
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/ops/focal_loss.py#L7-L58",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/_utils.py",
+      "id": "TV24",
+      "symbol": "Matcher.set_low_quality_matches_",
+      "start_line": 398,
+      "end_line": 417,
+      "claim": "Restores candidates having the maximum available overlap for each GT, including ties.",
+      "why": "Provides the best-anchor rescue mechanism invoked by RPN matching.",
+      "file_sha256": "db2dc5438179c9784533b5485a6bbfef41692a0663c5d4ffb9c7f36308b76544",
+      "file_lines": 540,
+      "span_sha256": "5d64834684a31da1d74d35e735a45a3abc70f0df56d0eca2716158c621828b2c",
+      "definitions": [
+        {
+          "symbol": "Matcher.set_low_quality_matches_",
+          "start_line": 398,
+          "end_line": 417
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/_utils.py#L398-L417",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "repo": "pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "path": "torchvision/models/detection/_utils.py",
+      "id": "TV25",
+      "symbol": "BoxLinearCoder.decode",
+      "start_line": 275,
+      "end_line": 311,
+      "claim": "Multiplies normalized ltrb by reference dimensions then subtracts/adds distances around reference centers.",
+      "why": "Recovers xyxy detections from FCOS point/stride references without anchor-shape regression.",
+      "file_sha256": "db2dc5438179c9784533b5485a6bbfef41692a0663c5d4ffb9c7f36308b76544",
+      "file_lines": 540,
+      "span_sha256": "0edfffe8bcfe3340cb7118eb51b34f3a57c34db27b87938cc73a0f673d434866",
+      "definitions": [
+        {
+          "symbol": "BoxLinearCoder.decode",
+          "start_line": 275,
+          "end_line": 311
+        }
+      ],
+      "permalink": "https://github.com/pytorch/vision/blob/3ac97aa9120137381ed1060f37237e44485ac2aa/torchvision/models/detection/_utils.py#L275-L311",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y01",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/cfg/models/11/yolo11.yaml",
+      "symbol": "backbone / head graph",
+      "start_line": 15,
+      "end_line": 47,
+      "claim": "Backbone, top-down and bottom-up fusion, and three Detect input levels are explicitly wired in YAML.",
+      "why": "Distinguishes the fusion neck from the Detect prediction module.",
+      "file_sha256": "94cf4eb9ac55aec23513b447626a6d637300f7462244e413e59ea4b68885c4a5",
+      "file_lines": 47,
+      "span_sha256": "e3191e0da95dc0537689631c10156b0e2653892c819a656669e8abf51ae2f629",
+      "definitions": [],
+      "symbol_check": "non-Python/configuration reference: line/hash verification only",
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/cfg/models/11/yolo11.yaml#L15-L47",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y02",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/nn/tasks.py",
+      "symbol": "parse_model",
+      "start_line": 933,
+      "end_line": 1045,
+      "claim": "Parser applies compound scaling, rounds channels, injects repeated-block counts and Detect input-channel list.",
+      "why": "Unscaled YAML channels are not the actual YOLO11n tensor channels.",
+      "file_sha256": "9899ae2677002b68909be94216322b16bb60b13e6ddc3a0e7ad451a5f2d110f9",
+      "file_lines": 1183,
+      "span_sha256": "ccb7ac0a2d08dca42df478e4beee75b4f733adccdfff49f76f5eacb4c7286572",
+      "definitions": [
+        {
+          "symbol": "parse_model",
+          "start_line": 933,
+          "end_line": 1070
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/nn/tasks.py#L933-L1045",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y03",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/nn/modules/block.py",
+      "symbol": "C3k2.__init__",
+      "start_line": 723,
+      "end_line": 731,
+      "claim": "C3k2 subclasses C2f and uses Bottleneck or C3k inner blocks.",
+      "why": "Identifies actual backbone building block instead of assuming a ResNet backbone.",
+      "file_sha256": "b617083dc9c6451c430c3b30cb026c7f36dec2bf577d3af397f52f4a5f9b2777",
+      "file_lines": 1108,
+      "span_sha256": "f91a56a2f8cffee1dd00ad3907e6c6d8e80a87b3b314acfdd506ac6a73615538",
+      "definitions": [
+        {
+          "symbol": "C3k2.__init__",
+          "start_line": 726,
+          "end_line": 731
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/nn/modules/block.py#L723-L731",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y04",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/nn/modules/block.py",
+      "symbol": "SPPF.forward",
+      "start_line": 169,
+      "end_line": 188,
+      "claim": "Sequential stride-one max pooling and concatenation preserve feature resolution.",
+      "why": "Explains receptive-field expansion at P5.",
+      "file_sha256": "b617083dc9c6451c430c3b30cb026c7f36dec2bf577d3af397f52f4a5f9b2777",
+      "file_lines": 1108,
+      "span_sha256": "d561997d7b8941208cbbff007597fbd6f12fda8a74c8dc30c1142add0e053ccf",
+      "definitions": [
+        {
+          "symbol": "SPPF.forward",
+          "start_line": 184,
+          "end_line": 188
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/nn/modules/block.py#L169-L188",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y05",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/nn/modules/block.py",
+      "symbol": "C2PSA.forward",
+      "start_line": 1037,
+      "end_line": 1041,
+      "claim": "Projection splits channels, applies PSABlock to one part, and fuses it with bypass.",
+      "why": "Attention is part of the backbone feature processing.",
+      "file_sha256": "b617083dc9c6451c430c3b30cb026c7f36dec2bf577d3af397f52f4a5f9b2777",
+      "file_lines": 1108,
+      "span_sha256": "83358d4f3bb9b40db707071cc29d30546a75afc6a431c35b959aa58f44c299fe",
+      "definitions": [
+        {
+          "symbol": "C2PSA.forward",
+          "start_line": 1037,
+          "end_line": 1041
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/nn/modules/block.py#L1037-L1041",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y06",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/nn/modules/head.py",
+      "symbol": "Detect",
+      "start_line": 21,
+      "end_line": 68,
+      "claim": "Standard Detect has end2end=False, reg_max=16, separated box/class branches and no objectness branch.",
+      "why": "Defines both prediction representation and selected standard inference path.",
+      "file_sha256": "c7463c953285a980b8a0037525327ec90e37b085c4229df97660b5e2f76d4279",
+      "file_lines": 597,
+      "span_sha256": "0fe063e84bc0e2524728563009c8e0a01d0701611b6eb4630c915892d6437661",
+      "definitions": [
+        {
+          "symbol": "Detect",
+          "start_line": 21,
+          "end_line": 161
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/nn/modules/head.py#L21-L68",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y07",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/nn/modules/head.py",
+      "symbol": "Detect._inference",
+      "start_line": 94,
+      "end_line": 120,
+      "claim": "Flatten levels, integrate side distributions, decode around points, multiply by stride, and sigmoid class logits.",
+      "why": "Connects dense raw predictions to resized-image boxes and class probabilities.",
+      "file_sha256": "c7463c953285a980b8a0037525327ec90e37b085c4229df97660b5e2f76d4279",
+      "file_lines": 597,
+      "span_sha256": "e8c9d744c78c42c9c76b9b4b3d678dd4806e0c5b8a2a261c08111c38fceb2f66",
+      "definitions": [
+        {
+          "symbol": "Detect._inference",
+          "start_line": 94,
+          "end_line": 120
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/nn/modules/head.py#L94-L120",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y08",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/nn/modules/block.py",
+      "symbol": "DFL",
+      "start_line": 55,
+      "end_line": 73,
+      "claim": "Fixed weights 0 through 15 calculate expected side distances after softmax.",
+      "why": "Distributional regression must be decoded before box geometry is available.",
+      "file_sha256": "b617083dc9c6451c430c3b30cb026c7f36dec2bf577d3af397f52f4a5f9b2777",
+      "file_lines": 1108,
+      "span_sha256": "7d6eec21ab751fc94cf1d6dbcdc3498d7117cfac13fb8f5bbf316a34207685de",
+      "definitions": [
+        {
+          "symbol": "DFL",
+          "start_line": 55,
+          "end_line": 73
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/nn/modules/block.py#L55-L73",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y09",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/nn/tasks.py",
+      "symbol": "DetectionModel.init_criterion",
+      "start_line": 386,
+      "end_line": 388,
+      "claim": "Non-end-to-end YOLO11 uses v8DetectionLoss.",
+      "why": "Shared code names can describe newer model configurations without a separate loss class.",
+      "file_sha256": "9899ae2677002b68909be94216322b16bb60b13e6ddc3a0e7ad451a5f2d110f9",
+      "file_lines": 1183,
+      "span_sha256": "95543f4ca77ba75e188ae69c8c0aadbee992cf143973fe8562f6252392c3d2b9",
+      "definitions": [
+        {
+          "symbol": "DetectionModel.init_criterion",
+          "start_line": 386,
+          "end_line": 388
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/nn/tasks.py#L386-L388",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y10",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/utils/loss.py",
+      "symbol": "v8DetectionLoss",
+      "start_line": 157,
+      "end_line": 260,
+      "claim": "BCE classification; call-site TaskAligned topk10 alpha0.5 beta6; detached predictions for assignment; CIoU and DFL weighted losses.",
+      "why": "Prevents mistaking commented varifocal code or unrelated focal classes for the active objective.",
+      "file_sha256": "496dc5545169f0a8bf2c24fcc087456e6e8a9b23dc427dd198a35cbd50213102",
+      "file_lines": 745,
+      "span_sha256": "3f08f523a7bdc540f692ef9bbb6db991d37786a98100bb9864dec254ea7296fa",
+      "definitions": [
+        {
+          "symbol": "v8DetectionLoss",
+          "start_line": 157,
+          "end_line": 261
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/utils/loss.py#L157-L260",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y11",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/utils/tal.py",
+      "symbol": "TaskAlignedAssigner",
+      "start_line": 90,
+      "end_line": 125,
+      "claim": "Inside-box candidate masks and top-k alignment use s^alpha times clamped CIoU^beta.",
+      "why": "Assignment uses both classification confidence and predicted geometry, rather than fixed anchor-box IoU.",
+      "file_sha256": "102b2ef79c44a8e22d9b13033786130f716c52222c40d5b2d29642dd37ef15f9",
+      "file_lines": 355,
+      "span_sha256": "fa003581452120a316155d6086409f4e1289027d0a08b2333164e8875026071d",
+      "definitions": [
+        {
+          "symbol": "TaskAlignedAssigner",
+          "start_line": 13,
+          "end_line": 265
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/utils/tal.py#L90-L125",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y12",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/utils/tal.py",
+      "symbol": "TaskAlignedAssigner.forward",
+      "start_line": 72,
+      "end_line": 88,
+      "claim": "Resolve collisions and normalize alignment scores to soft target scores.",
+      "why": "Shows why classification labels carry localization quality.",
+      "file_sha256": "102b2ef79c44a8e22d9b13033786130f716c52222c40d5b2d29642dd37ef15f9",
+      "file_lines": 355,
+      "span_sha256": "265189ca60e04530ec96dd744c36eb6e06b7b97670d86e09e4e5e49501681355",
+      "definitions": [
+        {
+          "symbol": "TaskAlignedAssigner.forward",
+          "start_line": 39,
+          "end_line": 88
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/utils/tal.py#L72-L88",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y13",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/utils/tal.py",
+      "symbol": "TaskAlignedAssigner.select_highest_overlaps",
+      "start_line": 235,
+      "end_line": 265,
+      "claim": "When one point is assigned to multiple targets, keep the highest-overlap target.",
+      "why": "Distinguishes conflict resolution from one-to-one set matching.",
+      "file_sha256": "102b2ef79c44a8e22d9b13033786130f716c52222c40d5b2d29642dd37ef15f9",
+      "file_lines": 355,
+      "span_sha256": "58d90045f43e7b449b228858f8725bcd3ce6b4bff02a69d25362bd65d28c24f0",
+      "definitions": [
+        {
+          "symbol": "TaskAlignedAssigner.select_highest_overlaps",
+          "start_line": 235,
+          "end_line": 265
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/utils/tal.py#L235-L265",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y14",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/utils/loss.py",
+      "symbol": "DFLoss.__call__",
+      "start_line": 73,
+      "end_line": 88,
+      "claim": "Two-bin interpolated cross entropy supervises continuous side-distance targets.",
+      "why": "DFL is a box-regression loss, not the classification focal loss.",
+      "file_sha256": "496dc5545169f0a8bf2c24fcc087456e6e8a9b23dc427dd198a35cbd50213102",
+      "file_lines": 745,
+      "span_sha256": "a72be2f618117cc03a48b40bd40db864fa1ac9309ffbd98c9bf0e0e585c22d45",
+      "definitions": [
+        {
+          "symbol": "DFLoss.__call__",
+          "start_line": 73,
+          "end_line": 88
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/utils/loss.py#L73-L88",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y15",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/utils/tal.py",
+      "symbol": "make_anchors",
+      "start_line": 303,
+      "end_line": 315,
+      "claim": "Generate center points with offset 0.5 and associate strides; no predefined aspect-ratio boxes.",
+      "why": "Internal anchors naming does not make the detector anchor-box-based.",
+      "file_sha256": "102b2ef79c44a8e22d9b13033786130f716c52222c40d5b2d29642dd37ef15f9",
+      "file_lines": 355,
+      "span_sha256": "b62681dcd4159b38b6467e5139a84663fe4682b7383406f1f9f9300dbfe50483",
+      "definitions": [
+        {
+          "symbol": "make_anchors",
+          "start_line": 303,
+          "end_line": 315
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/utils/tal.py#L303-L315",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y16",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/models/yolo/detect/predict.py",
+      "symbol": "DetectionPredictor.postprocess",
+      "start_line": 23,
+      "end_line": 40,
+      "claim": "Invoke confidence/IoU-configured NMS then scale boxes into the original image frame.",
+      "why": "Traces the model-to-final-detections path.",
+      "file_sha256": "fe463afbfc2c3c2b7d64e7fe8b0bac71e8a400ce5357f2a78d876fda4a04e390",
+      "file_lines": 41,
+      "span_sha256": "b6718222476c756c63af863c241ef9320796480cbf661ee3104f844914b03ea6",
+      "definitions": [
+        {
+          "symbol": "DetectionPredictor.postprocess",
+          "start_line": 23,
+          "end_line": 41
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/models/yolo/detect/predict.py#L23-L40",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y17",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/utils/ops.py",
+      "symbol": "non_max_suppression",
+      "start_line": 226,
+      "end_line": 293,
+      "claim": "Confidence filter, xywh-to-xyxy conversion, optional class selection, pre-NMS truncation, class offsets, torchvision NMS and max_det.",
+      "why": "Standard YOLO11 uses class-aware NMS rather than one-to-one query selection.",
+      "file_sha256": "76c5cd772ad8c7fa7a8a8eb37b38a0f69f387714bb53ed74bdc787355bb620bd",
+      "file_lines": 834,
+      "span_sha256": "303acb9d64825f6ff76e6dbc169189087c98aca8be35ebd9700611bdb5238cb3",
+      "definitions": [
+        {
+          "symbol": "non_max_suppression",
+          "start_line": 163,
+          "end_line": 312
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/utils/ops.py#L226-L293",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y18",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/utils/ops.py",
+      "symbol": "scale_boxes",
+      "start_line": 88,
+      "end_line": 123,
+      "claim": "Subtract letterbox padding, divide by gain, and clip to original image dimensions.",
+      "why": "Coordinates must be restored before comparing with original annotations.",
+      "file_sha256": "76c5cd772ad8c7fa7a8a8eb37b38a0f69f387714bb53ed74bdc787355bb620bd",
+      "file_lines": 834,
+      "span_sha256": "0c1de0b95ab6d342c8beb3cb1092fb5ec336d6d0baeaa01b5675027d941b01c2",
+      "definitions": [
+        {
+          "symbol": "scale_boxes",
+          "start_line": 88,
+          "end_line": 123
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/utils/ops.py#L88-L123",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y19",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/engine/predictor.py",
+      "symbol": "BasePredictor.preprocess",
+      "start_line": 117,
+      "end_line": 133,
+      "claim": "BGR-to-RGB conversion, BCHW reordering and /255 normalization follow the pre_transform call.",
+      "why": "Makes the preprocessing and box-restoration pair explicit.",
+      "file_sha256": "3203161d425d45c54269598ecaf772d868e4fc4c911eff9aaf44921b141ef05e",
+      "file_lines": 403,
+      "span_sha256": "ff05b14f6234da8fbfd304a38c24781cd5dad8e99a1045964e8adb9b4bedde23",
+      "definitions": [
+        {
+          "symbol": "BasePredictor.preprocess",
+          "start_line": 115,
+          "end_line": 133
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/engine/predictor.py#L117-L133",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y20",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/utils/loss.py",
+      "symbol": "BboxLoss.forward",
+      "start_line": 99,
+      "end_line": 113,
+      "claim": "Quality-weighted CIoU and DFL supervise decoded boxes and side-distance distributions.",
+      "why": "DFL is a box-regression loss, not the classification focal loss.",
+      "file_sha256": "496dc5545169f0a8bf2c24fcc087456e6e8a9b23dc427dd198a35cbd50213102",
+      "file_lines": 745,
+      "span_sha256": "cbd65745d454ff6ff2d22527a502a13e4e771d347cdb3fb3b846be36835dda1f",
+      "definitions": [
+        {
+          "symbol": "BboxLoss.forward",
+          "start_line": 99,
+          "end_line": 113
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/utils/loss.py#L99-L113",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y21",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/utils/tal.py",
+      "symbol": "dist2bbox",
+      "start_line": 318,
+      "end_line": 327,
+      "claim": "Decode four ltrb distances into box coordinates relative to grid points.",
+      "why": "Internal anchors naming does not make the detector anchor-box-based.",
+      "file_sha256": "102b2ef79c44a8e22d9b13033786130f716c52222c40d5b2d29642dd37ef15f9",
+      "file_lines": 355,
+      "span_sha256": "55b9167d35ab7094076eba459266376ed33b557335a0e8b3e632f4fa2b3ff33b",
+      "definitions": [
+        {
+          "symbol": "dist2bbox",
+          "start_line": 318,
+          "end_line": 327
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/utils/tal.py#L318-L327",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "Y22",
+      "repo": "ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "path": "ultralytics/engine/predictor.py",
+      "symbol": "BasePredictor.pre_transform",
+      "start_line": 144,
+      "end_line": 156,
+      "claim": "LetterBox resizes images while preserving aspect ratio and adding padding.",
+      "why": "Makes the preprocessing and box-restoration pair explicit.",
+      "file_sha256": "3203161d425d45c54269598ecaf772d868e4fc4c911eff9aaf44921b141ef05e",
+      "file_lines": 403,
+      "span_sha256": "777115699871185e6e0fcfa63775b892a766f713fdfc539cc4d4adda6f27e71f",
+      "definitions": [
+        {
+          "symbol": "BasePredictor.pre_transform",
+          "start_line": 144,
+          "end_line": 156
+        }
+      ],
+      "permalink": "https://github.com/ultralytics/ultralytics/blob/6e43d1e1e5db72afbf686dee6745669bcb124b0a/ultralytics/engine/predictor.py#L144-L156",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D01",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/backbone.py",
+      "symbol": "BackboneBase.__init__",
+      "start_line": 58,
+      "end_line": 70,
+      "claim": "Detection mode returns only ResNet layer4; segmentation may request intermediate layers.",
+      "why": "Original DETR is single-scale and has no FPN/PAN.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/backbone.py#L58-L70",
+      "file_sha256": "6ee87cdb91ca3df38550336c4f5d5b297a5db8e4be8f6c2c0e96e0d88c96d918",
+      "file_lines": 119,
+      "span_sha256": "25ffa3e36d93f6a585fa5cbf8b8cbd8e7c8b0237acc7c7146e7d92d890273b56",
+      "definitions": [
+        {
+          "symbol": "BackboneBase.__init__",
+          "start_line": 60,
+          "end_line": 70
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/backbone.py#L58-L70",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D02",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/backbone.py",
+      "symbol": "Backbone.__init__",
+      "start_line": 83,
+      "end_line": 93,
+      "claim": "ResNet uses FrozenBatchNorm2d; ResNet-50 emits 2048 channels.",
+      "why": "Identifies actual backbone rather than assigning a generic transformer-only backbone.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/backbone.py#L83-L93",
+      "file_sha256": "6ee87cdb91ca3df38550336c4f5d5b297a5db8e4be8f6c2c0e96e0d88c96d918",
+      "file_lines": 119,
+      "span_sha256": "f63517dd5201aaf25edcaebe6c97f9e8bfba325d6246172aa26a74631cfd5d34",
+      "definitions": [
+        {
+          "symbol": "Backbone.__init__",
+          "start_line": 85,
+          "end_line": 93
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/backbone.py#L83-L93",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D03",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/detr.py",
+      "symbol": "DETR.__init__",
+      "start_line": 21,
+      "end_line": 42,
+      "claim": "Creates class linear head, three-layer box MLP, learned object-query embedding and 1x1 feature projection.",
+      "why": "Connects queries and output heads to concrete modules.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L21-L42",
+      "file_sha256": "b5a584ada4d074d16852f9ad87ebc75bbdc91386b630755f993cb3fbf2290d42",
+      "file_lines": 359,
+      "span_sha256": "3ee98692a5fab3a6f3faba0a36aaa9377a6394e77cc315f62bb0bc83b28dda6c",
+      "definitions": [
+        {
+          "symbol": "DETR.__init__",
+          "start_line": 23,
+          "end_line": 42
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L21-L42",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D04",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/detr.py",
+      "symbol": "DETR.forward",
+      "start_line": 59,
+      "end_line": 72,
+      "claim": "Uses features[-1], transformer outputs, class head and sigmoid normalized box head.",
+      "why": "Traces the actual final detection computation.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L59-L72",
+      "file_sha256": "b5a584ada4d074d16852f9ad87ebc75bbdc91386b630755f993cb3fbf2290d42",
+      "file_lines": 359,
+      "span_sha256": "332df20ee8a1504eb8e7f5fa1bb55027dde42400291ec483d4cbc75e4bb6c83a",
+      "definitions": [
+        {
+          "symbol": "DETR.forward",
+          "start_line": 44,
+          "end_line": 72
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L59-L72",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D05",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/transformer.py",
+      "symbol": "Transformer.forward",
+      "start_line": 47,
+      "end_line": 59,
+      "claim": "Flattens spatial features, repeats learned query embeddings and initializes zero decoder content.",
+      "why": "Explains how image features and object slots enter attention.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/transformer.py#L47-L59",
+      "file_sha256": "730677b5e9b6127d502e39cf42b0292856e6432815491050dcbaf84b4a6b4f6e",
+      "file_lines": 297,
+      "span_sha256": "890684896356dbb9a39d846af5447e767e6b702aaaa741c22e44b3bbd451d2bb",
+      "definitions": [
+        {
+          "symbol": "Transformer.forward",
+          "start_line": 47,
+          "end_line": 59
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/transformer.py#L47-L59",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D06",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/transformer.py",
+      "symbol": "TransformerDecoderLayer.forward_post",
+      "start_line": 212,
+      "end_line": 233,
+      "claim": "Runs query self-attention followed by cross-attention over encoder memory.",
+      "why": "Query interaction is part of joint set prediction.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/transformer.py#L212-L233",
+      "file_sha256": "730677b5e9b6127d502e39cf42b0292856e6432815491050dcbaf84b4a6b4f6e",
+      "file_lines": 297,
+      "span_sha256": "6e3612cdef2f1aecf7f00d9d43cc09b74bde9d38ddda3b1e01f572c980739cc4",
+      "definitions": [
+        {
+          "symbol": "TransformerDecoderLayer.forward_post",
+          "start_line": 212,
+          "end_line": 233
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/transformer.py#L212-L233",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D07",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/matcher.py",
+      "symbol": "HungarianMatcher.forward",
+      "start_line": 34,
+      "end_line": 82,
+      "claim": "Combines negative class probability, pairwise L1 and negative GIoU, then invokes SciPy linear_sum_assignment.",
+      "why": "One-to-one global assignment differs from dense many-positive training; matching cost is not cross entropy.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/matcher.py#L34-L82",
+      "file_sha256": "5dc956c06849722bd754806e559e420c13364e286546a5c9c04f8820e9c99b20",
+      "file_lines": 86,
+      "span_sha256": "5d4dc24189526f4ed95da247b3224dee1fcd95ab766e85f2ed29f7e9bd292ebc",
+      "definitions": [
+        {
+          "symbol": "HungarianMatcher.forward",
+          "start_line": 35,
+          "end_line": 82
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/matcher.py#L34-L82",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D08",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/detr.py",
+      "symbol": "SetCriterion.loss_labels",
+      "start_line": 108,
+      "end_line": 127,
+      "claim": "Initializes every query to no-object, overwrites matched labels, and applies weighted cross entropy.",
+      "why": "Unmatched duplicates receive no-object supervision.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L108-L127",
+      "file_sha256": "b5a584ada4d074d16852f9ad87ebc75bbdc91386b630755f993cb3fbf2290d42",
+      "file_lines": 359,
+      "span_sha256": "edb445e601b424f98db9a3a0c3b8d0f694707c88468fc0173acf88ced7ecb238",
+      "definitions": [
+        {
+          "symbol": "SetCriterion.loss_labels",
+          "start_line": 108,
+          "end_line": 127
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L108-L127",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D09",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/detr.py",
+      "symbol": "SetCriterion.loss_boxes",
+      "start_line": 143,
+      "end_line": 162,
+      "claim": "Computes matched-box L1 and 1-GIoU normalized by object count.",
+      "why": "Distinguishes differentiable box loss from matching cost.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L143-L162",
+      "file_sha256": "b5a584ada4d074d16852f9ad87ebc75bbdc91386b630755f993cb3fbf2290d42",
+      "file_lines": 359,
+      "span_sha256": "fced63de4639760dc0a2e292576e269ae6831a86b1a2fdfe541537c8c17b7221",
+      "definitions": [
+        {
+          "symbol": "SetCriterion.loss_boxes",
+          "start_line": 143,
+          "end_line": 162
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L143-L162",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D10",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/detr.py",
+      "symbol": "SetCriterion.forward",
+      "start_line": 215,
+      "end_line": 253,
+      "claim": "Normalizes object count across workers and rematches every auxiliary decoder output.",
+      "why": "Intermediate supervision does not reuse the final decoder assignment.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L215-L253",
+      "file_sha256": "b5a584ada4d074d16852f9ad87ebc75bbdc91386b630755f993cb3fbf2290d42",
+      "file_lines": 359,
+      "span_sha256": "2777d76e51535b3faf14543751cc6549444db44c787eab65de5112ce9346f593",
+      "definitions": [
+        {
+          "symbol": "SetCriterion.forward",
+          "start_line": 215,
+          "end_line": 255
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L215-L253",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D11",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/detr.py",
+      "symbol": "PostProcess.forward",
+      "start_line": 258,
+      "end_line": 286,
+      "claim": "Softmaxes logits, chooses foreground class per query, converts cxcywh to xyxy, and scales by target dimensions; no NMS, cutoff or top-K.",
+      "why": "Verifies exact NMS-free inference and original-coordinate recovery.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L258-L286",
+      "file_sha256": "b5a584ada4d074d16852f9ad87ebc75bbdc91386b630755f993cb3fbf2290d42",
+      "file_lines": 359,
+      "span_sha256": "5a762c0928dbbdfd8d5e1209b04e2453422eda56d8f6cc700bdb8aef3ab7b207",
+      "definitions": [
+        {
+          "symbol": "PostProcess.forward",
+          "start_line": 261,
+          "end_line": 286
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L258-L286",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D12",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "engine.py",
+      "symbol": "evaluate",
+      "start_line": 107,
+      "end_line": 108,
+      "claim": "Passes each target orig_size to bbox postprocessor.",
+      "why": "Confirms the rescaling dimensions are original image dimensions during evaluation.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/engine.py#L107-L108",
+      "file_sha256": "9b9221a849c888d5243389972cde15864bfaf91b8bff5e242680b6196969eeb0",
+      "file_lines": 151,
+      "span_sha256": "75d7cd05b9f44615957bef74ee430e0b4932385c8bccba72f187ab0f4a6c5041",
+      "definitions": [
+        {
+          "symbol": "evaluate",
+          "start_line": 68,
+          "end_line": 151
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/engine.py#L107-L108",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D13",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "main.py",
+      "symbol": "get_args_parser",
+      "start_line": 35,
+      "end_line": 79,
+      "claim": "CLI defaults are ResNet-50, sine encoding, 6+6 transformer layers, 256 dimensions, 8 heads, 100 queries, matching/loss coefficients 1:5:2 and eos_coef=0.1.",
+      "why": "Actual build defaults override generic constructor defaults.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/main.py#L35-L79",
+      "file_sha256": "e4ccf3f577814b58505cc832ad03448366c215031e8d2e594b92eb018989d370",
+      "file_lines": 248,
+      "span_sha256": "de5933e57270be1900b965a4bf36338d8aeaddc33e093830b97a7cb3b3621d80",
+      "definitions": [
+        {
+          "symbol": "get_args_parser",
+          "start_line": 20,
+          "end_line": 102
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/main.py#L35-L79",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D14",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "models/detr.py",
+      "symbol": "build",
+      "start_line": 304,
+      "end_line": 335,
+      "claim": "COCO uses max category id plus one (91), so the classifier adds no-object for 92 outputs.",
+      "why": "Avoids incorrectly reporting this original repository as an 81-logit contiguous COCO classifier.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L304-L335",
+      "file_sha256": "b5a584ada4d074d16852f9ad87ebc75bbdc91386b630755f993cb3fbf2290d42",
+      "file_lines": 359,
+      "span_sha256": "7e8b853d77cb96e83edc01885b67e9808924bf94dc0e89cc33822bd3ba8ec730",
+      "definitions": [
+        {
+          "symbol": "build",
+          "start_line": 304,
+          "end_line": 359
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/models/detr.py#L304-L335",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D15",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "util/box_ops.py",
+      "symbol": "box_cxcywh_to_xyxy",
+      "start_line": 9,
+      "end_line": 13,
+      "claim": "Unpacks cx,cy,w,h and constructs corner coordinates.",
+      "why": "Actual box representation resolves a width/height typo in DETR.forward docstring.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/util/box_ops.py#L9-L13",
+      "file_sha256": "f0c1c3e27b0f69955e74b09b4ae1898e41e409d1af292c478ba8be71856112fc",
+      "file_lines": 88,
+      "span_sha256": "65b431e0f1a9ddee1af89cc2d69f5aa71ae682910edaa1418d34247c180632d7",
+      "definitions": [
+        {
+          "symbol": "box_cxcywh_to_xyxy",
+          "start_line": 9,
+          "end_line": 13
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/util/box_ops.py#L9-L13",
+      "errors": [],
+      "passed": true
+    },
+    {
+      "id": "D16",
+      "repo": "facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "path": "engine.py",
+      "symbol": "train_one_epoch",
+      "start_line": 32,
+      "end_line": 35,
+      "claim": "Applies criterion.weight_dict to returned component losses.",
+      "why": "Loss coefficients are applied outside SetCriterion.loss_boxes; cardinality logging is not optimized.",
+      "url": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/engine.py#L32-L35",
+      "file_sha256": "9b9221a849c888d5243389972cde15864bfaf91b8bff5e242680b6196969eeb0",
+      "file_lines": 151,
+      "span_sha256": "2ba3b63dcd036b79cbd9bc9fd5e0c2f41ba92f154ca40a1bc849571af43722eb",
+      "definitions": [
+        {
+          "symbol": "train_one_epoch",
+          "start_line": 17,
+          "end_line": 64
+        }
+      ],
+      "permalink": "https://github.com/facebookresearch/detr/blob/29901c51d7fe8712168b8d0d64351170bc0f83e0/engine.py#L32-L35",
+      "errors": [],
+      "passed": true
+    }
+  ]
+}

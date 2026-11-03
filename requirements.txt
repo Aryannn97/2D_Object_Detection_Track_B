@@ -1,0 +1,4 @@
+# The source inspector, fetcher, and toy demonstrations use Python 3.10+ stdlib.
+# Git must be installed separately. No torch, GPU, checkpoints, or datasets needed.
+# Optional dependency for regenerating the PDF report:
+reportlab==4.4.9

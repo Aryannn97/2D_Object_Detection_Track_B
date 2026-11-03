@@ -1,0 +1,122 @@
+{
+  "kind": "synthetic_toy_demonstration_not_model_execution",
+  "randomness": "none",
+  "coordinate_convention": "continuous xyxy; no inclusive +1 pixel convention",
+  "ground_truth": [
+    [
+      0,
+      0,
+      10,
+      10
+    ],
+    [
+      20,
+      0,
+      30,
+      10
+    ]
+  ],
+  "predictions": [
+    [
+      0,
+      0,
+      10,
+      10
+    ],
+    [
+      1,
+      0,
+      11,
+      10
+    ],
+    [
+      20,
+      0,
+      30,
+      10
+    ]
+  ],
+  "same_class_scores": [
+    0.95,
+    0.9,
+    0.85
+  ],
+  "prediction_target_iou": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.8181818181818182,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "toy_dense_iou_threshold": 0.5,
+  "toy_dense_positive_pairs": [
+    {
+      "prediction": 0,
+      "target": 0
+    },
+    {
+      "prediction": 1,
+      "target": 0
+    },
+    {
+      "prediction": 2,
+      "target": 1
+    }
+  ],
+  "toy_matching_cost": "1-IoU; not DETR's exact cost",
+  "one_to_one_assignment": {
+    "matches": [
+      {
+        "prediction": 0,
+        "target": 0
+      },
+      {
+        "prediction": 2,
+        "target": 1
+      }
+    ],
+    "total_cost": 0.0,
+    "unmatched_predictions": [
+      1
+    ],
+    "number_of_assignments_enumerated": 6
+  },
+  "greedy_nms_threshold": 0.5,
+  "greedy_nms_kept_indices": [
+    0,
+    2
+  ],
+  "crowding_case": {
+    "two_distinct_object_boxes": [
+      [
+        0,
+        0,
+        10,
+        10
+      ],
+      [
+        2,
+        0,
+        12,
+        10
+      ]
+    ],
+    "iou": 0.6666666666666666,
+    "nms_kept_indices": [
+      0
+    ]
+  },
+  "interpretation": [
+    "A dense positive rule can supervise more than one prediction for one target.",
+    "A one-to-one match selects at most one prediction per target; DETR supervises unmatched queries as no-object.",
+    "Greedy NMS removes nearby same-class duplicates, but can also suppress distinct overlapping objects.",
+    "No-object supervision encourages, but does not mathematically guarantee, duplicate-free DETR inference."
+  ]
+}

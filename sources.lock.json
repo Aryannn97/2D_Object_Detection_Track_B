@@ -1,0 +1,25 @@
+{
+  "repositories": [
+    {
+      "name": "vision",
+      "url": "https://github.com/pytorch/vision",
+      "commit": "3ac97aa9120137381ed1060f37237e44485ac2aa",
+      "directory": "../upstream/vision",
+      "release": "v0.20.1"
+    },
+    {
+      "name": "ultralytics",
+      "url": "https://github.com/ultralytics/ultralytics",
+      "commit": "6e43d1e1e5db72afbf686dee6745669bcb124b0a",
+      "directory": "../upstream/ultralytics",
+      "release": "v8.3.0"
+    },
+    {
+      "name": "detr",
+      "url": "https://github.com/facebookresearch/detr",
+      "commit": "29901c51d7fe8712168b8d0d64351170bc0f83e0",
+      "directory": "../upstream/detr",
+      "release": "official main snapshot"
+    }
+  ]
+}

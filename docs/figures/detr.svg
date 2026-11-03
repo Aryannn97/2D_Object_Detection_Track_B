@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="516" height="160" preserveAspectRatio="xMinYMin meet" viewBox="0 0 516 160" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="516" height="160"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-160)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="516" height="30" rx="5" ry="5" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd; stroke-dasharray: 3, 2;"/>
+			<text x="187.331982421875" y="19" style="font-family: BodyBold; font-size: 6.6px;fill: rgb(1%,48%,53%); stroke:none;" transform="translate(0,38) scale(1,-1)">TRAINING PATH (not run at inference)</text>
+			<text x="78.27656249999998" y="8" style="font-family: Body; font-size: 6.9px;fill: rgb(14%,21%,29%); stroke:none;" transform="translate(0,16) scale(1,-1)">SetCriterion: HungarianMatcher -&gt; CE (no-object weight 0.1) + L1 + GIoU, plus auxiliary decoder losses</text>
+			<rect x="0" y="111" width="160" height="43" rx="5" ry="5" style="stroke: rgb(77%,85%,88%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(93%,96%,97%); fill-rule: evenodd;"/>
+			<text x="26.966259765625004" y="137" style="font-family: BodyBold; font-size: 8.2px;fill: rgb(7%,16%,25%); stroke:none;" transform="translate(0,274) scale(1,-1)">Image + padding mask</text>
+			<text x="18.577392578125" y="122" style="font-family: Body; font-size: 7.0px;fill: rgb(14%,21%,29%); stroke:none;" transform="translate(0,244) scale(1,-1)">NestedTensor and positional codes</text>
+			<rect x="178" y="111" width="160" height="43" rx="5" ry="5" style="stroke: rgb(77%,85%,88%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(93%,96%,97%); fill-rule: evenodd;"/>
+			<text x="213.406494140625" y="137" style="font-family: BodyBold; font-size: 8.2px;fill: rgb(7%,16%,25%); stroke:none;" transform="translate(0,274) scale(1,-1)">ResNet-50: final C5</text>
+			<text x="201.376220703125" y="122" style="font-family: Body; font-size: 7.0px;fill: rgb(14%,21%,29%); stroke:none;" transform="translate(0,244) scale(1,-1)">1 x 1 projection to 256 channels</text>
+			<rect x="356" y="111" width="160" height="43" rx="5" ry="5" style="stroke: rgb(77%,85%,88%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(93%,96%,97%); fill-rule: evenodd;"/>
+			<text x="387.246435546875" y="137" style="font-family: BodyBold; font-size: 8.2px;fill: rgb(7%,16%,25%); stroke:none;" transform="translate(0,274) scale(1,-1)">Transformer encoder</text>
+			<text x="375.2763671875" y="122" style="font-family: Body; font-size: 7.0px;fill: rgb(14%,21%,29%); stroke:none;" transform="translate(0,244) scale(1,-1)">flatten spatial features + positions</text>
+			<rect x="356" y="49" width="160" height="43" rx="5" ry="5" style="stroke: rgb(77%,85%,88%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(93%,96%,97%); fill-rule: evenodd;"/>
+			<text x="387.230419921875" y="75" style="font-family: BodyBold; font-size: 8.2px;fill: rgb(7%,16%,25%); stroke:none;" transform="translate(0,150) scale(1,-1)">Transformer decoder</text>
+			<text x="380.958740234375" y="60" style="font-family: Body; font-size: 7.0px;fill: rgb(14%,21%,29%); stroke:none;" transform="translate(0,120) scale(1,-1)">100 learned query embeddings</text>
+			<rect x="178" y="49" width="160" height="43" rx="5" ry="5" style="stroke: rgb(77%,85%,88%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(93%,96%,97%); fill-rule: evenodd;"/>
+			<text x="200.137548828125" y="75" style="font-family: BodyBold; font-size: 8.2px;fill: rgb(7%,16%,25%); stroke:none;" transform="translate(0,150) scale(1,-1)">Parallel prediction heads</text>
+			<text x="195.900634765625" y="60" style="font-family: Body; font-size: 7.0px;fill: rgb(14%,21%,29%); stroke:none;" transform="translate(0,120) scale(1,-1)">class incl. no-object; sigmoid boxes</text>
+			<rect x="0" y="49" width="160" height="43" rx="5" ry="5" style="stroke: rgb(77%,85%,88%); stroke-linecap: butt; stroke-width: 0.7; fill: rgb(86%,94%,93%); fill-rule: evenodd;"/>
+			<text x="42.847753906250006" y="75" style="font-family: BodyBold; font-size: 8.2px;fill: rgb(7%,16%,25%); stroke:none;" transform="translate(0,150) scale(1,-1)">Final detections</text>
+			<text x="15.316650390625" y="60" style="font-family: Body; font-size: 7.0px;fill: rgb(14%,21%,29%); stroke:none;" transform="translate(0,120) scale(1,-1)">class max, xyxy, original-size scaling</text>
+			<path d="M 160,132 L 178,132 Z" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="178 132, 173 134.5, 173 129.5" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 1; fill: rgb(1%,48%,53%); fill-rule: evenodd;"/>
+			<path d="M 338,132 L 356,132 Z" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="356 132, 351 134.5, 351 129.5" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 1; fill: rgb(1%,48%,53%); fill-rule: evenodd;"/>
+			<path d="M 436,111 L 436,92 Z" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="436 92, 433.5 97, 438.5 97" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 1; fill: rgb(1%,48%,53%); fill-rule: evenodd;"/>
+			<path d="M 356,70 L 338,70 Z" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="338 70, 343 72.5, 343 67.5" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 1; fill: rgb(1%,48%,53%); fill-rule: evenodd;"/>
+			<path d="M 178,70 L 160,70 Z" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 1.1;"/>
+			<polygon points="160 70, 165 72.5, 165 67.5" style="stroke: rgb(1%,48%,53%); stroke-linecap: butt; stroke-width: 1; fill: rgb(1%,48%,53%); fill-rule: evenodd;"/>
+		</g>
+	</g>
+</svg>

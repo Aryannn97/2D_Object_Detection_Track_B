@@ -1,0 +1,20 @@
+Track B reproduction command log
+These commands check source and toy mechanisms; they do not run detectors.
+Started UTC: 2026-10-27T18:20:03.815212+00:00
+Python: 3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]
+Platform: Linux-6.18.55-x86_64-with-glibc2.39
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python scripts/inspect_sources.py
+Static audit: 63/63 evidence references passed
+
+exit_code=0; elapsed_seconds=0.456
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python scripts/toy_assignment_demo.py
+Toy assertions passed: 3 dense positives; 2 one-to-one matches; NMS keeps [0, 2]; crowded case keeps [0].
+
+exit_code=0; elapsed_seconds=0.032
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python scripts/build_report.py
+Built report/2D_Object_Detection_Track_B.pdf (10 pages) and docs/report.md
+
+exit_code=0; elapsed_seconds=0.280

@@ -1,0 +1,40 @@
+{
+  "kind": "source_toy_and_document_validation_not_detector_evaluation",
+  "commands": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/inspect_sources.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.45559120400139363,
+      "stdout": "Static audit: 63/63 evidence references passed\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/toy_assignment_demo.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.03188847599994915,
+      "stdout": "Toy assertions passed: 3 dense positives; 2 one-to-one matches; NMS keeps [0, 2]; crowded case keeps [0].\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/build_report.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.2804367810003896,
+      "stdout": "Built report/2D_Object_Detection_Track_B.pdf (10 pages) and docs/report.md\n",
+      "stderr": ""
+    }
+  ],
+  "report_sha256": "5b593046be527e20c0d1a4b0de7aee772a3fd912f094c91beb6b53c93fd76f77",
+  "report_bytes": 97821,
+  "pdf_pages": 10,
+  "visual_review": "All ten final pages rendered and visually reviewed; no overlap, clipping or missing content found.",
+  "references": "63 source references; 9 original papers; 3 official repositories"
+}
