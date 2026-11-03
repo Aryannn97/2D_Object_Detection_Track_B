@@ -70,8 +70,6 @@ pdftoppm -scale-to 1200 -png report/2D_Object_Detection_Track_B.pdf preview
 
 | Location | Purpose |
 |---|---|
-| `report/` | Generated PDF output (git-ignored; submitted separately) |
-| `docs/report.md` | Editable report text |
 | `docs/model_notes/` | Detailed TorchVision, YOLO11 and DETR call-path analysis |
 | `docs/figures/` | Four original code-derived SVG diagrams |
 | `docs/evidence.json` | Structured code evidence |
